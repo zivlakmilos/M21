@@ -20,14 +20,14 @@ int main(void)
     scanf("%d", &n);
 
     // Promenjive
-    int number[n];  // Niz
+    int numbers[n];  // Niz
     int i;          // Brojacka promenjiva
 
     // Unos podataka u niz
     for(i = 0; i < n; i++)
     {
         printf("Unesi %d. element niza: ", i + 1);
-        scanf("%d", &number[i]);
+        scanf("%d", &numbers[i]);
     }
 
     printf("\n\n"); // Napravi 2 prazna reda (da izgleda urednije)
@@ -35,7 +35,7 @@ int main(void)
     // Ispis podataka (u obrnutom redosledu)
     for(i = n - 1; i >= 0; i--)
     {
-        printf("%d. element niza je %d \n", n - i, number[i]);
+        printf("%d. element niza je %d \n", n - i, numbers[i]);
     }
 
     return 0;

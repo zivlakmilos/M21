@@ -1,6 +1,6 @@
 /*
  *
- * Naziv: [niz]Unos_pr1
+ * Naziv: [niz]Sortiranje
  * Autor: Milos Zivlak
  *
  * Fajl: main.c
@@ -17,25 +17,25 @@ int main(void)
 {
     // Promenjive
     int i, j;                       // Brojacke promenjive
-    int number[NUM_OF_ELEMENTS];    // Niz za sortiranje
+    int numbers[NUM_OF_ELEMENTS];    // Niz za sortiranje
     int tmp;                        // Pomocna promenjiva (za sortiranje)
 
     // Ucitavanje niza
     for(i = 0; i < NUM_OF_ELEMENTS; i++)
     {
         printf("Unesi %d. element niza: ", i + 1);
-        scanf("%d", &number[i]);
+        scanf("%d", &numbers[i]);
     }
 
     // Sortiranje niza
     for(i = 0; i < NUM_OF_ELEMENTS; i++)
         for(j = i + 1; j < NUM_OF_ELEMENTS; j++)
         {
-            if(number[i] > number[j])
+            if(numbers[i] > numbers[j])
             {
-                tmp = number[j];
-                number[j] = number[i];
-                number[i] = tmp;
+                tmp = numbers[j];
+                numbers[j] = numbers[i];
+                numbers[i] = tmp;
             }
         }
 
@@ -43,7 +43,7 @@ int main(void)
     printf("\nSortirani niz:\n");
     for(i = 0; i < NUM_OF_ELEMENTS; i++)
     {
-        printf("%d\n", number[i]);
+        printf("%d\n", numbers[i]);
     }
 
     return 0;
