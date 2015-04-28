@@ -1,3 +1,15 @@
+/*
+ *
+ * Naziv: [niz]Unos_pr1
+ * Autor: Milos Zivlak
+ *
+ * Fajl: main.c
+ *
+ * Opis:
+ * Program koji demonstrira ucitavanje i ispisivanje podataka
+ *  u niz / iz niza.
+ */
+
 #include <stdio.h>
 
 int main(void)
@@ -23,7 +35,7 @@ int main(void)
     // Ispis podataka (u obrnutom redosledu)
     for(i = n - 1; i >= 0; i--)
     {
-        printf("%d. element niza je %d \n", i, number[i]);
+        printf("%d. element niza je %d \n", n - i, number[i]);
     }
 
     return 0;
