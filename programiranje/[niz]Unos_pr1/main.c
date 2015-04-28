@@ -8,22 +8,22 @@ int main(void)
     scanf("%d", &n);
 
     // Promenjive
-    int array[n];
-    int i;
+    int number[n];  // Niz
+    int i;          // Brojacka promenjiva
 
     // Unos podataka u niz
     for(i = 0; i < n; i++)
     {
         printf("Unesi %d. element niza: ", i + 1);
-        scanf("%d", &array[i]);
+        scanf("%d", &number[i]);
     }
 
-    printf("\n\n");
+    printf("\n\n"); // Napravi 2 prazna reda (da izgleda urednije)
 
     // Ispis podataka (u obrnutom redosledu)
     for(i = n - 1; i >= 0; i--)
     {
-        printf("%d. element niza je %d \n", i, array[i]);
+        printf("%d. element niza je %d \n", i, number[i]);
     }
 
     return 0;
