@@ -14,7 +14,7 @@
 
 #define NUM_OF_ELEMENTS         10
 
-int main()
+int main(void)
 {
     // Promenjive
     int i;                          // Brojacka promenjiva
