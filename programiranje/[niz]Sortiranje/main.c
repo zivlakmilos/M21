@@ -7,6 +7,8 @@
  *
  * Opis:
  * Program koji demonstrira sortiranje nizova.
+ * Int je uzet kao primer, na ovaj nacin moguce je
+ * sortirati i bilo koji drugi tip (float, double, char ...).
  */
 
 #include <stdio.h>
