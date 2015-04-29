@@ -9,7 +9,7 @@
  * Program koji demonstrira sortiranje nizova.
  * Float je uzet kao primer, na ovaj nacin moguce je
  * sortirati i bilo koji drugi tip (int, char ...).
- * Koriscen je algoritam buuble, vise o njemu:
+ * Koriscen je algoritam "bubble", vise o njemu:
  *  http://en.wikipedia.org/wiki/Bubble_sort
  */
 
@@ -17,7 +17,7 @@
 
 #define NUM_OF_ELEMENTS         5
 
-int main()
+int main(void)
 {
     // Promenjve
     int i, j;                           // Brojacke promenjive
@@ -34,7 +34,7 @@ int main()
 
     // Sortiranje niza
     j = 0;
-    while(swapped)      // Isto sto i swapped == 1, samo lepse
+    while(swapped)      // Isto sto i swapped != 0 (logicki tacno - 1), samo lepse
     {
         swapped = 0;
         j++;
