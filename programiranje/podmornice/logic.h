@@ -13,5 +13,6 @@
 #define SHIP_SMALL_LENGTH       2
 
 void setup(int height, int width, int (*map)[width]);
+int randomNumber(int max);
 
 #endif
