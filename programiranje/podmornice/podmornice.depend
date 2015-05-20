@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1432125222 source:/home/zi/M21/public/programiranje/podmornice/graphics.c
+	<stdio.h>
+	"graphics.h"
+
+1432125212 source:/home/zi/M21/public/programiranje/podmornice/logic.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"logic.h"
+
+1432125302 /home/zi/M21/public/programiranje/podmornice/logic.h
+
+1432125262 source:/home/zi/M21/public/programiranje/podmornice/main.c
+	<stdio.h>
+	"logic.h"
+	"graphics.h"
+
+1432125282 /home/zi/M21/public/programiranje/podmornice/graphics.h
+
