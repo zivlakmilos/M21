@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-#define VALUTA      100
-
-float din2eur(float din);
+float din2eur(float din)
+{
+    return din / 100;
+}
 
 int main(void)
 {
@@ -10,9 +11,4 @@ int main(void)
     scanf("%f", &din);
     printf("%f\n", din2eur(din));
     return 0;
-}
-
-float din2eur(float din)
-{
-    return din / VALUTA;
 }
