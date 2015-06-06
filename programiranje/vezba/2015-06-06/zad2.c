@@ -1,7 +1,14 @@
 #include <stdio.h>
 
-int obim(int a, int b);
-int povrsina(int a, int b);
+int obim(int a, int b)
+{
+    return 2 * a + 2 * b;
+}
+
+int povrsina(int a, int b)
+{
+    return a * b;
+}
 
 int main(void)
 {
@@ -12,14 +19,4 @@ int main(void)
     printf("Povrsina je :\t%d\n", povrsina(a, b));
 
     return 0;
-}
-
-int obim(int a, int b)
-{
-    return 2 * a + 2 * b;
-}
-
-int povrsina(int a, int b)
-{
-    return a * b;
 }
