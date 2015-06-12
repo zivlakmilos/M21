@@ -12,6 +12,8 @@ int main(void)
 
     for(i = 0; i < m; i++)
         scnaf("%d %d", &np[i], &izn[i]);
+    for(i = 0; i < n; i++)
+        tocakb[i] = 0;
 
     return 0;
 }
