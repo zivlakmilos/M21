@@ -1,6 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
 
+#define GAME_STATUS_PLAYING         0
+#define GAME_STATUS_MENU            1
+
 class Game
 {
     private:
@@ -9,6 +12,7 @@ class Game
         char *caption;
         bool isRunning;
         int fps;
+        int status;
         SDL_Event event;
 
         void events(SDL_Event event);

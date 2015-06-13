@@ -13,6 +13,7 @@ Game::Game(void)
     caption = "Brodovi     by ZI";
     isRunning = true;
     fps = 10;
+    status = GAME_STATUS_MENU;
 }
 
 Game::~Game(void)
@@ -114,10 +115,20 @@ void Game::mainLoop(void)
         /*
          * Logic
          */
+        if(status == GAME_STATUS_PLAYING)
+        {
+        } else if(status == GAME_STATUS_MENU)
+        {
+        }
 
         /*
          * Render
          */
+        if(status == GAME_STATUS_PLAYING)
+        {
+        } else if(status == GAME_STATUS_MENU)
+        {
+        }
     }
 
     // Free
