@@ -3,6 +3,11 @@
 
 #define NUM_OF_ELEMENTS         4
 
+#define MENU_CREATE             0
+#define MENU_JOIN               1
+#define MENU_SINGLE             2
+#define MENU_EXIT               3
+
 class Menu
 {
     private:
@@ -10,12 +15,17 @@ class Menu
         float y;
         float width;
         float height;
-        char *menu[NUM_OF_ELEMENTS];
+        int texture[NUM_OF_ELEMENTS];
         int position;
+        int elementWidth;
+        int elementHeight;
 
     public:
-        render(void);
-        setActivate(int index);
-}
+        Menu(float x, float y, float widht, float height);
+        void render(void);
+        void setActivate(int index);
+        void moveUp(void);
+        void moveDown(void);
+};
 
 #endif // MENU_H

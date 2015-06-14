@@ -73,7 +73,7 @@ void Game::events(SDL_Event event)
     {
         if(event.type == SDL_QUIT)
             isRunning = false;
-        if(event.type == SDL_KEYUP && event.key.keysym.sym == SDL_ESCAPE)
+        if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE)
             isRunning = false;
 
         switch(event.type)
@@ -111,6 +111,7 @@ void Game::mainLoop(void)
         /*
          * Hangler event
          */
+        this->events(event);
 
         /*
          * Logic
