@@ -15,8 +15,8 @@ Game::Game(void)
     this->isRunning = true;
     this->fps = 10;
     this->status = GAME_STATUS_MENU;
-    this->menu = new Menu((this->width / 2) - 250, (this->height / 2) - 300,
-                250, 500);
+    this->menu = new Menu((this->width / 2) - 125, (this->height / 2) - 150,
+                250, 300);
 }
 
 Game::~Game(void)
@@ -45,7 +45,7 @@ void Game::init(void)
      SDL_SetVideoMode(this->width, this->height, 32, SDL_OPENGL);
 
      // Specific the clear color
-     glClearColor(1, 1, 1, 1);  // White
+     glClearColor(0, 0, 0, 1);  // Black
 
      // What portion of the screen we will display
      glViewport(0, 0, this->width, this->height);
@@ -118,7 +118,7 @@ void Game::mainLoop(void)
         if(status == GAME_STATUS_PLAYING)
             this->events(event);
         else if(status == GAME_STATUS_MENU)
-            if(menu->events(event) == 1)
+            if(menu->events(event) == MENU_EXIT)
                 this->isRunning = false;
 
         /*
@@ -133,6 +133,10 @@ void Game::mainLoop(void)
         /*
          * Render
          */
+        glClear(GL_COLOR_BUFFER_BIT);
+        glPushMatrix();
+        glOrtho(0, this->width, 0, this->height, -1, 1);
+
         if(status == GAME_STATUS_PLAYING)
         {
         } else if(status == GAME_STATUS_MENU)
@@ -140,9 +144,16 @@ void Game::mainLoop(void)
             menu->render();
         }
 
-        // Delay
+        glPopMatrix();
+        SDL_GL_SwapBuffers();
+
+        /*
+         * Delay
+         */
         SDL_Delay(fps);
     }
+
+    std::cout<<"Main loop is ended\n";
 
     // Free
     SDL_Quit();

@@ -15,7 +15,7 @@ class Menu
         float y;
         float width;
         float height;
-        int texture[NUM_OF_ELEMENTS];
+        //int texture[NUM_OF_ELEMENTS];
         int position;
         int elementWidth;
         int elementHeight;

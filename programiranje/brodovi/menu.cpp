@@ -12,6 +12,9 @@ Menu::Menu(float x, float y, float width, float height)
     this->y = y;
     this->width = width;
     this->height = height;
+    this->position = 0;
+    this->elementWidth = 200;
+    this->elementHeight = 50;
     // ToDo: Load Texture
 }
 
@@ -32,8 +35,8 @@ void Menu::render(void)
     // Draw menu choices
     width = this->elementWidth;
     height = this->elementHeight;
-    x = (this->width / 2) - width;
-    y = (this->height / (NUM_OF_ELEMENTS + 5)) - height;
+    x = this->x + (this->width / 2) - (width / 2);
+    y = this->y + (this->height / (NUM_OF_ELEMENTS + 5)) - height / 2;
     for(i = 0; i < NUM_OF_ELEMENTS; i++)
     {
         glColor4ub(255, 255, 255, 255);
@@ -43,7 +46,7 @@ void Menu::render(void)
             glVertex2f(x + width, y + height);
             glVertex2f(x, y + height);
         glEnd();
-        y += height + 5;
+        y += height + 25;
     }
 }
 
@@ -75,7 +78,7 @@ int Menu::events(SDL_Event event)
     while(SDL_PollEvent(&event))
     {
         if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE)
-            return 1;
+            return MENU_EXIT;
 
         switch(event.type)
         {
