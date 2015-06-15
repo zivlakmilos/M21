@@ -47,10 +47,12 @@ void Menu::render(void)
     }
 }
 
+/*
 void Menu::setActivate(int index)
 {
     this->position = index;
 }
+*/
 
 void Menu::moveUp(void)
 {
@@ -66,4 +68,32 @@ void Menu::moveDown(void)
         position = 0;
     else
         position++;
+}
+
+int Menu::events(SDL_Event event)
+{
+    while(SDL_PollEvent(&event))
+    {
+        if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE)
+            return 1;
+
+        switch(event.type)
+        {
+            case SDL_KEYDOWN:
+                switch(event.key.keysym.sym)
+                {
+                    case SDLK_UP:
+                        this->moveUp();
+                        break;
+                    case SDLK_DOWN:
+                        this->moveDown();
+                        break;
+                }
+                break;
+            case SDL_KEYUP:
+                break;
+        }
+    }
+
+    return 0;
 }

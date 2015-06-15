@@ -4,20 +4,24 @@
  */
 
 #include "main.h"
+#include "menu.h"
 #include "game.h"
 
 Game::Game(void)
 {
-    width = 800;
-    height = 800;
-    caption = "Brodovi     by ZI";
-    isRunning = true;
-    fps = 10;
-    status = GAME_STATUS_MENU;
+    this->width = 500;
+    this->height = 500;
+    this->caption = "Brodovi     by ZI";
+    this->isRunning = true;
+    this->fps = 10;
+    this->status = GAME_STATUS_MENU;
+    this->menu = new Menu((this->width / 2) - 250, (this->height / 2) - 300,
+                250, 500);
 }
 
 Game::~Game(void)
 {
+    delete this->menu;
 }
 
 void Game::init(void)
@@ -111,7 +115,11 @@ void Game::mainLoop(void)
         /*
          * Hangler event
          */
-        this->events(event);
+        if(status == GAME_STATUS_PLAYING)
+            this->events(event);
+        else if(status == GAME_STATUS_MENU)
+            if(menu->events(event) == 1)
+                this->isRunning = false;
 
         /*
          * Logic
@@ -129,7 +137,11 @@ void Game::mainLoop(void)
         {
         } else if(status == GAME_STATUS_MENU)
         {
+            menu->render();
         }
+
+        // Delay
+        SDL_Delay(fps);
     }
 
     // Free

@@ -4,8 +4,8 @@
  */
 
 #include "main.h"
-#include "game.h"
 #include "menu.h"
+#include "game.h"
 
 int main(int argc, char *argv[])
 {

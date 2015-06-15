@@ -13,6 +13,7 @@ class Game
         bool isRunning;
         int fps;
         int status;
+        Menu *menu;
         SDL_Event event;
 
         void events(SDL_Event event);

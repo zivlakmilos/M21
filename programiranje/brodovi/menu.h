@@ -19,13 +19,14 @@ class Menu
         int position;
         int elementWidth;
         int elementHeight;
+        void moveUp(void);
+        void moveDown(void);
 
     public:
         Menu(float x, float y, float widht, float height);
         void render(void);
-        void setActivate(int index);
-        void moveUp(void);
-        void moveDown(void);
+        //void setActive(int index);
+        int events(SDL_Event event);
 };
 
 #endif // MENU_H
