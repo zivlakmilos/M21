@@ -12,7 +12,7 @@ Menu::Menu(float x, float y, float width, float height)
     this->y = y;
     this->width = width;
     this->height = height;
-    this->position = 0;
+    this->position = 1;
     this->elementWidth = 200;
     this->elementHeight = 50;
     // ToDo: Load Texture
@@ -40,6 +40,8 @@ void Menu::render(void)
     for(i = 0; i < NUM_OF_ELEMENTS; i++)
     {
         glColor4ub(255, 255, 255, 255);
+        if(position == NUM_OF_ELEMENTS - i)
+            glColor4ub(0, 0, 255, 255);
         glBegin(GL_QUADS);
             glVertex2f(x, y);
             glVertex2f(x + width, y);
@@ -59,16 +61,16 @@ void Menu::setActivate(int index)
 
 void Menu::moveUp(void)
 {
-    if(position < 0)
-        position = NUM_OF_ELEMENTS - 1;
+    if(position <= 1)
+        position = NUM_OF_ELEMENTS;
     else
         position--;
 }
 
 void Menu::moveDown(void)
 {
-    if(position > NUM_OF_ELEMENTS - 1)
-        position = 0;
+    if(position >= NUM_OF_ELEMENTS)
+        position = 1;
     else
         position++;
 }

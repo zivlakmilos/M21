@@ -68,7 +68,7 @@ void Game::init(void)
 
     // Initialize texture
     // playr->loadTexture();
-    std::cout << "Texture is initialize\n";
+    //std::cout << "Texture is initialize\n";
 }
 
 void Game::events(SDL_Event event)
@@ -78,7 +78,7 @@ void Game::events(SDL_Event event)
         if(event.type == SDL_QUIT)
             isRunning = false;
         if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE)
-            isRunning = false;
+            status = GAME_STATUS_MENU;
 
         switch(event.type)
         {
@@ -118,8 +118,11 @@ void Game::mainLoop(void)
         if(status == GAME_STATUS_PLAYING)
             this->events(event);
         else if(status == GAME_STATUS_MENU)
-            if(menu->events(event) == MENU_EXIT)
-                this->isRunning = false;
+            switch(menu->events(event)
+            {
+                case MENU_EXIT:
+                    this->isRunning = false;
+            }
 
         /*
          * Logic

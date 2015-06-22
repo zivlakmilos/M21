@@ -10,7 +10,8 @@ class Game
         float width;
         float height;
         char *caption;
-        bool isRunning;
+:x
+:x
         int fps;
         int status;
         Menu *menu;
