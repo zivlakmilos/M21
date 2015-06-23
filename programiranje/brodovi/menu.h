@@ -3,10 +3,10 @@
 
 #define NUM_OF_ELEMENTS         4
 
-#define MENU_CREATE             0
-#define MENU_JOIN               1
-#define MENU_SINGLE             2
-#define MENU_EXIT               3
+#define MENU_SINGLE             1
+#define MENU_MULTI              2
+#define MENU_LAN                3
+#define MENU_EXIT               4
 
 class Menu
 {

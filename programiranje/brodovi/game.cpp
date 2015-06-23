@@ -5,6 +5,7 @@
 
 #include "main.h"
 #include "menu.h"
+#include "map.h"
 #include "game.h"
 
 Game::Game(void)
@@ -15,6 +16,7 @@ Game::Game(void)
     this->isRunning = true;
     this->fps = 10;
     this->status = GAME_STATUS_MENU;
+    this->type = 0;
     this->menu = new Menu((this->width / 2) - 125, (this->height / 2) - 150,
                 250, 300);
 }
@@ -76,9 +78,9 @@ void Game::events(SDL_Event event)
     while(SDL_PollEvent(&event))
     {
         if(event.type == SDL_QUIT)
-            isRunning = false;
-        if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE)
-            status = GAME_STATUS_MENU;
+            this->isRunning = false;
+        if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
+            this->status = GAME_STATUS_MENU;
 
         switch(event.type)
         {
@@ -115,22 +117,42 @@ void Game::mainLoop(void)
         /*
          * Hangler event
          */
-        if(status == GAME_STATUS_PLAYING)
+        if(this->status == GAME_STATUS_PLAYING)
             this->events(event);
-        else if(status == GAME_STATUS_MENU)
-            switch(menu->events(event)
+        else if(this->status == GAME_STATUS_MENU)
+            /*
+            switch(menu->events(event))
             {
                 case MENU_EXIT:
                     this->isRunning = false;
+                    break;
             }
+            */
+            this->type = menu->events(event);
 
         /*
          * Logic
          */
-        if(status == GAME_STATUS_PLAYING)
+        if(this->status == GAME_STATUS_PLAYING)
         {
-        } else if(status == GAME_STATUS_MENU)
+        } else if(this->status == GAME_STATUS_MENU)
         {
+            /*
+            switch(type)
+            {
+                case MENU_EXIT:
+                      isRunning = false;
+                      type = 0;
+                      break;
+                default:
+                      status = GAME_STATUS_PLAYING;
+            }*/
+            if(this->type == MENU_EXIT)
+            {
+                this->isRunning = false;
+                this->type = 0;
+            } else if(type != 0)
+                this->status = GAME_STATUS_PLAYING;
         }
 
         /*
@@ -140,9 +162,9 @@ void Game::mainLoop(void)
         glPushMatrix();
         glOrtho(0, this->width, 0, this->height, -1, 1);
 
-        if(status == GAME_STATUS_PLAYING)
+        if(this->status == GAME_STATUS_PLAYING)
         {
-        } else if(status == GAME_STATUS_MENU)
+        } else if(this->status == GAME_STATUS_MENU)
         {
             menu->render();
         }

@@ -6,8 +6,10 @@
 //#include <SDL/SDL_mixer.h>
 #include <SDL/SDL_image.h>
 #include <iostream>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
+#include <cstdlib>
+#include <ctime>
+//#include <sys/types.h>
+//#include <sys/socket.h>
+//#include <netinet/in.h>
 
 #endif // MAIN_H

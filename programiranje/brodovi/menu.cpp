@@ -79,8 +79,10 @@ int Menu::events(SDL_Event event)
 {
     while(SDL_PollEvent(&event))
     {
+        /*
         if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE)
             return MENU_EXIT;
+        */
 
         switch(event.type)
         {
@@ -92,6 +94,9 @@ int Menu::events(SDL_Event event)
                         break;
                     case SDLK_DOWN:
                         this->moveDown();
+                        break;
+                    case SDLK_RETURN:
+                        return this->position;
                         break;
                 }
                 break;
