@@ -128,7 +128,7 @@ void Game::mainLoop(void)
                     break;
             }
             */
-            this->type = menu->events(event);
+            this->type = menu->events(this->event);
 
         /*
          * Logic
@@ -181,5 +181,5 @@ void Game::mainLoop(void)
     std::cout<<"Main loop is ended\n";
 
     // Free
-    SDL_Quit();
+    //SDL_Quit();
 }
