@@ -79,6 +79,8 @@ int Menu::events(SDL_Event event)
 {
     while(SDL_PollEvent(&event))
     {
+        if(event.type == SDL_QUIT)
+            return MENU_EXIT;
         /*
         if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE)
             return MENU_EXIT;

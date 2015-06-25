@@ -118,7 +118,7 @@ void Game::mainLoop(void)
          * Hangler event
          */
         if(this->status == GAME_STATUS_PLAYING)
-            this->events(event);
+            this->events(this->event);
         else if(this->status == GAME_STATUS_MENU)
             /*
             switch(menu->events(event))
@@ -175,7 +175,7 @@ void Game::mainLoop(void)
         /*
          * Delay
          */
-        SDL_Delay(fps);
+        SDL_Delay(fps / 1000);
     }
 
     std::cout<<"Main loop is ended\n";
