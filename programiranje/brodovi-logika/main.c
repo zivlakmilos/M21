@@ -1,15 +1,18 @@
 #include <stdio.h>
 
 #include "logic.h"
+#include "graphic.h"
 
 #define MAP_HEIGHT      10
 #define MAP_WIDTH       10
+
 
 int main(void)
 {
     int i, j;
     int map[MAP_HEIGHT][MAP_WIDTH];
 
+    /*
     genMap(MAP_HEIGHT, MAP_WIDTH, &map);
 
     for(i = 0; i < MAP_HEIGHT; i++)
@@ -18,4 +21,12 @@ int main(void)
             printf("%d ", map[i][j]);
         printf("\n");
     }
+    */
+
+    init();
+    drawBox();
+    sleep(2);
+    cleanup();
+
+    return 0;
 }

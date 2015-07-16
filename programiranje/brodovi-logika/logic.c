@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 #include "logic.h"
 
@@ -11,13 +12,14 @@ int randNumber(int max)
     return (rand() % max) + 1;
 }
 
-void genMap(int height, int width, int (*map)[width])
+void *genMap(int height, int width, int (*map)[width])
 {
     int i, j, k, n;                 // Brojacke promenjive
-    int tmpShip[SHIP_BIG_COUNT][2]; // Pomocna promenjiva za koordinate broda
+    int tmpX[4];                    // Pomocna promenjiva za x koordinate
+    int tmpY[4];                    // Pomocna promenjiva za y koordinate
     int x, y, side;                 // Promenjive za slucajne brojeve
     bool valid;                     // Da li je brod ne dobrom mestu
-    int x1, y1;                     // Pomocne promenjive za koordinate
+    //int x1, y1;                   // Pomocne promenjiva za koordinate
 
     // Ocisti mapu
     for(i = 0; i < height; i++)
@@ -25,40 +27,63 @@ void genMap(int height, int width, int (*map)[width])
             map[i][j] = MAP_FREE;
 
     // Kreiraj veliki brod
-    for(i = 0; i < SHIP_BIG_COUNT; i++)
+    for(n = 0; n < 3; n++)
     {
-        valid = false;
-
-        while(!valid)
+        k = 4 - n;
+        for(i = 0; i < n + 1; i++)
         {
-            valid = true;
-            x = randNumber(width);
-            y = randNumber(height);
-            side = randNumber(2);
-
-            for(j = 0; j < SHIP_BIG_SIZE; j++)
+            do
             {
-                tmpShip[j][0] = x;
-                tmpShip[j][1] = y;
+                valid = true;
+                x = randNumber(width);
+                y = randNumber(height);
+                side = randNumber(2);
 
-                if(map[y][x] != MAP_FREE)
+                for(j = 0; j < k; j++)
                 {
-                    valid = false;
-                    break;
-                }
+                    tmpX[j] = x;
+                    tmpY[j] = y;
 
-                if(side == 1)
-                    x++;
-                else
-                    y++;
+                    /*
+                    if(map[y][x] != MAP_FREE)
+                    {
+                        valid = false;
+                        break;
+                    } //else if(map[y + 1][x] != MAP_FREE ||
+                            //map[y - 1][x] != MAP_FREE
+                    */
+
+                    if(x > 10 || y > 10)
+                    {
+                        valid = false;
+                        break;
+                    }
+                    else if(map[y][x] != MAP_FREE ||
+                            map[y + 1][x] != MAP_FREE ||
+                            map[y - 1][x] != MAP_FREE ||
+                            map[y][x + 1] != MAP_FREE ||
+                            map[y][x - 1] != MAP_FREE)
+                    {
+                        valid = false;
+                        break;
+                    }
+
+
+                    if(side == 1)
+                        x++;
+                    else
+                        y++;
+                }
+            } while(!valid);
+
+            for(j = 0; j < k; j++)
+            {
+                //x1 = tmpX[j]
+                //y1 = tmpY[j]
+                map[tmpY[j]][tmpX[j]] = MAP_SHIP_ALIVE;
             }
         }
-
-        for(j = 0; i < SHIP_BIG_SIZE; j++)
-        {
-            x1 = tmpShip[j][0];
-            y1 = tmpShip[j][1];
-            map[y1][x1] = MAP_SHIP_ALIVE;
-        }
     }
+
+    return NULL;
 }
