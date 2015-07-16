@@ -32,6 +32,6 @@ int randNumber(int max);
  *  int height - visina mape
  *  int (*map)[width] - pokazivac na mesto u memoriji na kome se nalazi mapa
  */
-void *genMap(int height, int width, int (*map)[width]);
+void genMap(int height, int width, int (*map)[width]);
 
 #endif

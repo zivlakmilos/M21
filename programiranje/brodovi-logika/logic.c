@@ -12,7 +12,7 @@ int randNumber(int max)
     return (rand() % max) + 1;
 }
 
-void *genMap(int height, int width, int (*map)[width])
+void genMap(int height, int width, int (*map)[width])
 {
     int i, j, k, n;                 // Brojacke promenjive
     int tmpX[4];                    // Pomocna promenjiva za x koordinate
@@ -84,6 +84,4 @@ void *genMap(int height, int width, int (*map)[width])
             }
         }
     }
-
-    return NULL;
 }
